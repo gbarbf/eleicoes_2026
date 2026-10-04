@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Apuração 2026 x 2022</title>
+<link rel="stylesheet" href="style.css">
+<script src="vendor/chart.umd.min.js"></script>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Apuração 2026 <span class="vs">x 2022</span></h1>
+    <p class="sub">Presidente · 1º turno · dados oficiais do TSE</p>
+  </div>
+  <div id="status" class="status">carregando…</div>
+</header>
+<div id="aviso-demo" class="aviso" hidden>MODO DEMONSTRAÇÃO — números fictícios, apenas para testar a interface.</div>
+<div id="aviso-2022" class="aviso" hidden>Linha do tempo de 2022 não encontrada. Rode <code>python3 scripts/montar_2022.py</code> e reinicie o servidor.</div>
+<div id="aviso-erro" class="aviso erro" hidden></div>
+
+<main>
+  <section class="card">
+    <h2>Situação agora <small id="br-apurado"></small></h2>
+    <div class="barra-apur"><div id="br-barra"></div></div>
+    <div id="candidatos" class="candidatos"></div>
+  </section>
+
+  <section class="card">
+    <div class="filtros">
+      <label>Escopo <select id="f-escopo"></select></label>
+      <label>Horário <select id="f-hora"></select></label>
+      <label><span><span class="chip lado-a"></span>Lado Lula (2026)</span> <select id="f-a"></select></label>
+      <label><span><span class="chip lado-b"></span>Lado Bolsonaro (2026)</span> <select id="f-b"></select></label>
+    </div>
+    <h2 id="titulo-comp">Comparação</h2>
+    <p class="nota" id="nota-comp"></p>
+    <div class="comparacao" id="comparacao"></div>
+  </section>
+
+  <section class="card">
+    <div class="cab-grafico">
+      <h2 id="titulo-graf">Hora a hora</h2>
+      <div class="seg" id="f-metrica">
+        <button data-m="votos" class="ativo">Votos</button>
+        <button data-m="pct">% dos válidos</button>
+        <button data-m="apur">% apurado</button>
+      </div>
+    </div>
+    <div class="legenda" id="legenda"></div>
+    <div class="grafico"><canvas id="grafico"></canvas></div>
+  </section>
+
+  <section class="card">
+    <div class="cab-grafico">
+      <h2 id="titulo-tab">Estado a estado</h2>
+      <input id="f-busca" type="search" placeholder="Buscar…">
+    </div>
+    <p class="nota">Clique numa linha para ver o gráfico dela; clique de novo num estado para abrir as cidades.</p>
+    <div class="tabela-wrap"><table id="tabela"><thead></thead><tbody></tbody></table></div>
+  </section>
+</main>
+<footer>
+  2026: coletado do site de resultados do TSE e gravado a cada coleta. 2022: reconstruído dos boletins de urna
+  (horário de emissão de cada boletim). “Lado Lula/Bolsonaro” = números 13 e 22 por padrão.
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
