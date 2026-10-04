@@ -67,3 +67,13 @@ começa às 20h (mas a comparação "agora x 2022 no mesmo horário" funciona).
 - `scripts/montar_2022.py` — gera `data/linha_tempo_2022_t1.json.gz`.
 - `scripts/gerar_demo.py` — dados fictícios para `--demo`.
 - `web/` — página (HTML/CSS/JS + Chart.js embutido).
+
+## No celular
+
+- **Android (Termux):** `pkg install python git`, clone o repositório e rode
+  `python3 server.py --ufs SP` (limite as UFs para economizar dados/bateria);
+  abra `http://localhost:8026` no navegador do celular. Gere a linha do tempo de
+  2022 num computador e copie `data/linha_tempo_2022_t1.json.gz` para a pasta
+  `data/` do celular (o download completo tem alguns GB).
+- **iPhone ou qualquer celular:** rode o servidor no computador e, no celular
+  conectado ao mesmo Wi-Fi, abra `http://<IP-do-computador>:8026`.

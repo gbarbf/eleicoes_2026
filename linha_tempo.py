@@ -9,10 +9,14 @@ boletins com horário em [INICIO + k*BALDE, INICIO + (k+1)*BALDE). Boletins
 anteriores ao início caem no balde 0; posteriores ao fim, no último (N_BALDES).
 """
 
-from datetime import date, datetime, timedelta
-from zoneinfo import ZoneInfo
+from datetime import date, datetime, timedelta, timezone
 
-BRT = ZoneInfo("America/Sao_Paulo")
+try:
+    from zoneinfo import ZoneInfo
+
+    BRT = ZoneInfo("America/Sao_Paulo")
+except Exception:  # noqa: BLE001 - celular (Termux) sem base de fusos: Brasília é UTC-3 fixo
+    BRT = timezone(timedelta(hours=-3), "BRT")
 
 INICIO_MIN = 17 * 60  # 17:00
 FIM_MIN = 26 * 60  # 02:00 do dia seguinte
